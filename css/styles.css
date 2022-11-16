@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap&family=Poppins:wght@300&display=swap');
 
 body{
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Poppins', 'sans-serif';
     background-color: #0008C1;
 }
 #seleccionar-mascota{
@@ -11,13 +11,15 @@ body{
     align-items: center;
 }
 .titulo{
-    color: white;    
+    color: white;
+    font-family: 'Fredoka One', cursive;  
 }
 .subtitulo{
     color: white;
     font-size: 20px;
 }
-.tarjetas{
+.tarjetas,
+.btn-ataque-group{
     display: flex;
     gap: 10px;
 }
@@ -39,4 +41,75 @@ body{
 }
 input{
     display: none;
+}
+
+input:checked + label{
+    background: #5D8BF4;
+}
+
+#btn-mascota{
+    margin-top: 30px;
+    width: 180px;
+    height: 40px;
+    border-radius: 20px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+#seleccionar-ataque{
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-ataque{
+    background-color: #2146C7;
+    color: white;    
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border-color: transparent;
+    width: 100px;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+#mensajes{
+    width: 280px;
+    background: #EEEEEE;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#btn-reiniciar{
+    border-color: transparent;
+    color: #2146C7;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+.ataques{
+    display: grid;
+    grid-template-columns: 100px 100px;
+}
+
+.ataques-jugador,
+.ataques-enemigo{
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media(max-width: 360px){
+    .tarjetas{
+        flex-direction: column;
+    }
+    .btn-ataque-group{
+        flex-direction: column;
+    }
 }

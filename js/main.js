@@ -85,10 +85,10 @@ function revisarVidas(){
 }
 
 function crearMensajeFinal(resultadoFinal){
-    let sectionMensajes = document.querySelector('#mensajes');
-    let parrafo = document.createElement('p');
-    parrafo.innerHTML = `${resultadoFinal}`;
-    sectionMensajes.append(parrafo);
+    let sectionMensajes = document.querySelector('#resultado');
+    // let parrafo = document.createElement('p');
+    sectionMensajes.innerHTML = `${resultadoFinal}`;
+    // sectionMensajes.append(parrafo);
 
     let btnFuego = document.querySelector('#btn-fuego');
     btnFuego.disabled = true;
@@ -101,10 +101,21 @@ function crearMensajeFinal(resultadoFinal){
 }
 
 function crearMensaje(resultado){
-    let sectionMensajes = document.querySelector('#mensajes');
-    let parrafo = document.createElement('p');
-    parrafo.innerHTML = `Tu mascota ataco con ${ataqueJugador} y la mascota del enemigo ataco con ${ataqueEnemigo} - ${resultado}`;
-    sectionMensajes.append(parrafo);
+    let sectionMensajes = document.querySelector('#resultado');
+    let ataquesJugador = document.querySelector('#ataques-del-jugador');
+    let ataquesEnemigo = document.querySelector('#ataques-del-enemigo');
+
+    let nuevoAtaqueDelJugador = document.createElement('p');
+    let nuevoAtaqueDelEnemigo = document.createElement('p');
+
+    sectionMensajes.innerHTML = resultado;
+    nuevoAtaqueDelJugador.innerHTML = ataqueJugador;
+    nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
+    // let parrafo = document.createElement('p');
+    // parrafo.innerHTML = `Tu mascota ataco con ${ataqueJugador} y la mascota del enemigo ataco con ${ataqueEnemigo} - ${resultado}`;
+
+    ataquesJugador.appendChild(nuevoAtaqueDelJugador);
+    ataquesEnemigo.appendChild(nuevoAtaqueDelEnemigo);
 }
 
 function seleccionarMascotaJugador(){
@@ -112,7 +123,7 @@ function seleccionarMascotaJugador(){
     sectionSeleccionarMascota.style.display = 'none';
 
     let sectionSeleccionarAtaque = document.querySelector('#seleccionar-ataque');
-    sectionSeleccionarAtaque.style.display = 'block';
+    sectionSeleccionarAtaque.style.display = 'flex';
 
     let hipodoge = document.querySelector('#hipodoge');
     let capipepo = document.querySelector('#capipepo');
