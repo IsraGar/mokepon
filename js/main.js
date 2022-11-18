@@ -1,33 +1,88 @@
-let sectionSeleccionarAtaque = document.querySelector('#seleccionar-ataque');
-let sectionReiniciar = document.querySelector('#reiniciar');
-let btnMascotaJugador = document.querySelector('#btn-mascota');
-let btnFuego = document.querySelector('#btn-fuego');
-let btnAgua = document.querySelector('#btn-agua');
-let btnTierra = document.querySelector('#btn-tierra');
-let btnReiniciar = document.querySelector('#btn-reiniciar');
+const sectionSeleccionarAtaque = document.querySelector('#seleccionar-ataque');
+const sectionReiniciar = document.querySelector('#reiniciar');
+const btnMascotaJugador = document.querySelector('#btn-mascota');
+const btnFuego = document.querySelector('#btn-fuego');
+const btnAgua = document.querySelector('#btn-agua');
+const btnTierra = document.querySelector('#btn-tierra');
+const btnReiniciar = document.querySelector('#btn-reiniciar');
 
-let sectionSeleccionarMascota = document.querySelector('#seleccionar-mascota');
-let hipodoge = document.querySelector('#hipodoge');
-let capipepo = document.querySelector('#capipepo');
-let ratigueya = document.querySelector('#ratigueya');
-let mascotaJugador = document.querySelector('#mascota-jugador');
+const sectionSeleccionarMascota = document.querySelector('#seleccionar-mascota');
+const hipodoge = document.querySelector('#hipodoge');
+const capipepo = document.querySelector('#capipepo');
+const ratigueya = document.querySelector('#ratigueya');
+const mascotaJugador = document.querySelector('#mascota-jugador');
 
-let mascotaEnemigo = document.querySelector('#mascota-enemigo');
+const mascotaEnemigo = document.querySelector('#mascota-enemigo');
 
-let spanVidasJugador = document.querySelector('#vidas-jugador');
-let spanVidasEnemigo = document.querySelector('#vidas-enemigo');
+const spanVidasJugador = document.querySelector('#vidas-jugador');
+const spanVidasEnemigo = document.querySelector('#vidas-enemigo');
 
-let sectionMensajes = document.querySelector('#resultado');
-let ataquesJugador = document.querySelector('#ataques-del-jugador');
-let ataquesEnemigo = document.querySelector('#ataques-del-enemigo');
+const sectionMensajes = document.querySelector('#resultado');
+const ataquesJugador = document.querySelector('#ataques-del-jugador');
+const ataquesEnemigo = document.querySelector('#ataques-del-enemigo');
 
+const contenedorTarjetas = document.querySelector('#contenedor-tarjetas');
+
+let mokepones = [];
 let ataqueJugador = '';
 let ataqueEnemigo = '';
+let opcionDeMokepones;
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 
+class Mokepon{
+    constructor(nombre, foto, vida){
+        this.nombre = nombre;
+        this.foto = foto;
+        this.vida = vida;
+        this.ataques = [];
+    }    
+}
+
+let hipodogeM = new Mokepon('Hipodoge', './assets/hipodoge_attack.png',5);
+let capipepoM = new Mokepon('Capipepo', './assets/capipepo_attack.png',5);
+let ratigueyaM = new Mokepon('Ratigueya', './assets/ratigueya_attack.png',5);
+
+hipodogeM.ataques.push(
+    {nombre: '💧', id: 'btn-agua'},
+    {nombre: '💧', id: 'btn-agua'},
+    {nombre: '💧', id: 'btn-agua'},
+    {nombre: '🌱', id: 'btn-tierra'},
+    {nombre: '🔥', id: 'btn-fuego'}
+);
+
+capipepoM.ataques.push(
+    {nombre: '🌱', id: 'btn-tierra'},
+    {nombre: '🌱', id: 'btn-tierra'},
+    {nombre: '🌱', id: 'btn-tierra'},
+    {nombre: '💧', id: 'btn-agua'},
+    {nombre: '🔥', id: 'btn-fuego'}
+);
+
+ratigueyaM.ataques.push(
+    {nombre: '🔥', id: 'btn-fuego'},
+    {nombre: '🔥', id: 'btn-fuego'},
+    {nombre: '🔥', id: 'btn-fuego'},
+    {nombre: '💧', id: 'btn-agua'},
+    {nombre: '🌱', id: 'btn-tierra'}
+);
+
+mokepones.push(hipodogeM,capipepoM,ratigueyaM);
+
 function iniciarJuego(){    
-    sectionSeleccionarAtaque.style.display = 'none';    
+    sectionSeleccionarAtaque.style.display = 'none';
+    
+    mokepones.forEach((mokepon) => {
+        opcionDeMokepones = `
+        <input type="radio" name="mascota" id="${mokepon.nombre}" />
+        <label class="tarjeta-de-mokepon" for="${mokepon.nombre}">
+          <p>${mokepon.nombre}</p>
+          <img src="${mokepon.foto}" alt="${mokepon.nombre}">
+        </label>
+        `;
+        contenedorTarjetas.innerHTML += opcionDeMokepones;
+    });
+
     sectionReiniciar.style.display = 'none';    
     btnMascotaJugador.addEventListener('click', seleccionarMascotaJugador);    
     btnFuego.addEventListener('click', ataqueFuego);    
