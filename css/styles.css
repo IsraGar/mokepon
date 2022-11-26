@@ -17,6 +17,12 @@ body{
     font-size: 35px;
     margin-bottom: 0;  
 }
+.titulo-mapa{
+    color: #DFF6FF;
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 20px;
+    margin-bottom: 0;  
+}
 .subtitulo{
     color: #DFF6FF;
     font-size: 20px;
@@ -132,11 +138,35 @@ input:checked + label{
     align-items: center;
 }
 
-@media(max-width: 360px){
+#ver-mapa{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#ver-mapa button{
+    margin: 10px 0;
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    background: transparent;
+    border: 2px solid #DFF6FF;
+    color: #DFF6FF;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+@media(max-width: 560px){
     .tarjetas{
         flex-direction: column;
     }
     .btn-ataque-group{
         flex-direction: column;
+    }
+}
+@media(max-width: 300px){
+    #ver-mapa div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
